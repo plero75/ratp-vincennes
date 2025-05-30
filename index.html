@@ -1,80 +1,70 @@
-""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transport en temps réel - Hippodrome Vincennes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temps réel - Transports Hippodrome de Vincennes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-dark">
+  <div class="container mt-4">
+    <h1 class="fw-bold">Temps réel - Transports Hippodrome de Vincennes</h1>
+    <p id="lastUpdate" class="text-muted"></p>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title">🚆 RER A - Joinville-le-Pont</h2>
+        <div id="rer-directions"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const endpoints = [
-      { id: 'rer-a', name: 'RER A - Joinville-le-Pont', ref: 'STIF:StopPoint:Q:43135:' },
-      { id: 'bus-77-201', name: 'Bus 77/201 - École du Breuil', ref: 'STIF:StopPoint:Q:463644:' },
-      { id: 'bus-vincennes', name: 'Bus - Hippodrome Vincennes', ref: 'STIF:StopPoint:Q:463641:' }
-    ];
+    async function fetchRer() {
+      try {
+        const res = await fetch("https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=STIF:StopPoint:Q:43135");
+        const data = await res.json();
+        const visits = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit;
+        const now = new Date();
 
-    async function fetchData() {
-      const now = new Date();
-      document.getElementById('last-update').textContent = `Dernière mise à jour : ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+        const groupedByDirection = {};
 
-      for (const endpoint of endpoints) {
-        try {
-          const res = await fetch(`https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=${endpoint.ref}`);
-          const data = await res.json();
+        visits.forEach(visit => {
+          const dest = visit.MonitoredVehicleJourney.DestinationName[0].value;
+          const aimed = new Date(visit.MonitoredVehicleJourney.MonitoredCall.AimedArrivalTime);
+          const diffMin = Math.round((aimed - now) / 60000);
 
-          const departures = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map(v => {
-            const aimedTime = new Date(v.MonitoredVehicleJourney.MonitoredCall.AimedDepartureTime);
-            const minutes = Math.round((aimedTime - now) / 60000);
-            const timeStr = aimedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          if (diffMin >= 2) {
+            if (!groupedByDirection[dest]) groupedByDirection[dest] = [];
+            groupedByDirection[dest].push({
+              time: aimed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+              min: diffMin
+            });
+          }
+        });
 
-            return `Dans ${minutes} min (${timeStr}) vers ${v.MonitoredVehicleJourney.DestinationName[0].value}`;
+        const container = document.getElementById("rer-directions");
+        for (const direction in groupedByDirection) {
+          const ul = document.createElement("ul");
+          groupedByDirection[direction].forEach(j => {
+            const li = document.createElement("li");
+            li.textContent = `Dans ${j.min} min (${j.time}) vers ${direction}`;
+            ul.appendChild(li);
           });
-
-          const lastDeparture = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.slice(-1)[0];
-          const lastTime = new Date(lastDeparture.MonitoredVehicleJourney.MonitoredCall.AimedDepartureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-          document.getElementById(endpoint.id).innerHTML = `
-            <h2>${endpoint.name}</h2>
-            <ul>${departures.map(d => `<li>${d}</li>`).join('')}</ul>
-            <p>Dernier départ prévu : ${lastTime}</p>
-          `;
-        } catch (error) {
-          document.getElementById(endpoint.id).textContent = `Erreur lors du chargement des données pour ${endpoint.name}`;
+          const h5 = document.createElement("h5");
+          h5.textContent = direction;
+          container.appendChild(h5);
+          container.appendChild(ul);
         }
+
+        document.getElementById("lastUpdate").textContent =
+          "Dernière mise à jour : " + now.toLocaleString("fr-FR");
+      } catch (error) {
+        document.getElementById("rer-directions").textContent = "Erreur de chargement des horaires.";
       }
     }
 
-    setInterval(fetchData, 60000);
-    window.onload = fetchData;
+    fetchRer();
   </script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 1em;
-      background: #f9f9f9;
-      color: #333;
-    }
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 0.5em;
-    }
-    section {
-      margin-bottom: 2em;
-      padding: 1em;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    #last-update {
-      font-size: 0.9em;
-      color: #666;
-      margin-bottom: 1em;
-    }
-  </style>
-</head>
-<body>
-  <h1>Temps réel - Transports Hippodrome de Vincennes</h1>
-  <p id="last-update">Chargement...</p>
-  <section id="rer-a"></section>
-  <section id="bus-77-201"></section>
-  <section id="bus-vincennes"></section>
 </body>
-</html>""
+</html>

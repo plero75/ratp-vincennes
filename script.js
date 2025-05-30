@@ -1,8 +1,8 @@
 const endpoints = {
-  rer: 'https://ratp-proxy.hippodrome-proxy42.workers.dev?ref=STIF:StopPoint:Q:43135:',
+  rer: 'https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=STIF:StopPoint:Q:43135:',
   bus: [
-    'https://ratp-proxy.hippodrome-proxy42.workers.dev?ref=STIF:StopPoint:Q:463644:',
-    'https://ratp-proxy.hippodrome-proxy42.workers.dev?ref=STIF:StopPoint:Q:463641:'
+    'https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=STIF:StopPoint:Q:463644:',
+    'https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=STIF:StopPoint:Q:463641:'
   ],
   velib: [
     'https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_status.json',

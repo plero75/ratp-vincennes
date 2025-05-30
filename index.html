@@ -1,27 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transport en Temps Réel - Vincennes</title>
-  <script defer src="script.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RATP - Hippodrome Vincennes</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 2rem; }
+    h2 { margin-top: 1.5rem; color: #2b3e50; }
+    ul { padding-left: 1rem; }
+    li { margin-bottom: .25rem; }
+    p { margin-top: 0.5rem; }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-  <div class="max-w-4xl mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-6">Transport en Temps Réel - Hippodrome de Vincennes</h1>
-    <div id="rer" class="mb-6 p-4 bg-white rounded shadow">
-      <h2 class="text-xl font-semibold mb-2">🚆 RER A - Joinville-le-Pont</h2>
-      <ul id="rer-list"></ul>
-    </div>
-    <div id="bus" class="mb-6 p-4 bg-white rounded shadow">
-      <h2 class="text-xl font-semibold mb-2">🚌 Bus 77 & 201 - Ecole du Breuil / Hippodrome</h2>
-      <ul id="bus-list"></ul>
-    </div>
-    <div id="velib" class="mb-6 p-4 bg-white rounded shadow">
-      <h2 class="text-xl font-semibold mb-2">🚲 Vélib'</h2>
-      <ul id="velib-list"></ul>
-    </div>
-  </div>
+<body>
+  <h1>🚉 Prochains passages RATP & Vélib - Hippodrome</h1>
+  <div id="result"></div>
+  <p id="maj"></p>
+
+  <script>
+    const apiBase = "https://hippodrome-proxy42.workers.dev";
+    const lines = [
+      { ref: "STIF:StopPoint:Q:43135:", label: "RER A Joinville", lineCode: "line:RER:A" },
+      { ref: "STIF:StopPoint:Q:463644:", label: "Bus 77/201 Ecole du Breuil", lineCode: "line:BUS:77" },
+      { ref: "STIF:StopPoint:Q:463641:", label: "Bus Hippodrome Vincennes", lineCode: "line:BUS:201" }
+    ];
+
+    const cache = {};
+
+    async function fetchTrafic(lineCode) {
+      if (cache[lineCode] && (Date.now() - cache[lineCode].ts < 60000)) {
+        return cache[lineCode].val;
+      }
+      try {
+        const url = `https://prim.iledefrance-mobilites.fr/marketplace/v2/navitia/line_reports?filter=lines.uri%3D${encodeURIComponent(lineCode)}`;
+        const res = await fetch(url, {
+          headers: { "apiKey": "2OJ8JFlnxjXBbrwXTLMiunioq87FOQc9" }
+        });
+        const data = await res.json();
+        const msg = data.line_reports[0]?.message.text || "Trafic normal";
+        cache[lineCode] = { ts: Date.now(), val: msg };
+        return msg;
+      } catch {
+        return "Trafic: données indisponibles";
+      }
+    }
+
+    async function fetchPassages(ref) {
+      try {
+        const res = await fetch(`${apiBase}?ref=${ref}`);
+        const data = await res.json();
+        const visits = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit;
+        if (!visits || visits.length === 0) return ["Aucun passage"];
+        const formatted = visits.map(v => {
+          const time = new Date(v.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime);
+          const now = new Date();
+          const minLeft = Math.round((time - now) / 60000);
+          return `${minLeft} min (${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}) → ${v.MonitoredVehicleJourney.DestinationName}`;
+        });
+        const lastTime = new Date(visits[visits.length - 1].MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime);
+        formatted.push(`Dernier passage: ${lastTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`);
+        return formatted;
+      } catch {
+        return ["Prochains passages indisponibles"];
+      }
+    }
+
+    async function renderAll() {
+      const container = document.getElementById("result");
+      container.innerHTML = "";
+      for (const line of lines) {
+        const [passages, trafic] = await Promise.all([
+          fetchPassages(line.ref),
+          fetchTrafic(line.lineCode)
+        ]);
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <h2>${line.label}</h2>
+          <ul>${passages.map(p => `<li>${p}</li>`).join('')}</ul>
+          <p><strong>🚦 Trafic:</strong> ${trafic}</p>
+        `;
+        container.appendChild(div);
+      }
+      const dateStr = new Date().toLocaleString();
+      document.getElementById("maj").textContent = `Dernière mise à jour: ${dateStr}`;
+    }
+
+    renderAll();
+    setInterval(renderAll, 60000);
+  </script>
 </body>
 </html>

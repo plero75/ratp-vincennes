@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temps Réel - Hippodrome Vincennes</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-4xl mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-6">Transport en Temps Réel - Hippodrome de Vincennes</h1>
+
+    <div id="rer" class="mb-6 p-4 bg-white rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">🚆 RER A - Joinville-le-Pont</h2>
+      <ul id="rer-list"></ul>
+    </div>
+
+    <div id="bus" class="mb-6 p-4 bg-white rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">🚌 Bus 77 & 201 - Ecole du Breuil / Hippodrome</h2>
+      <ul id="bus-list"></ul>
+    </div>
+
+    <div id="velib" class="mb-6 p-4 bg-white rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">🚲 Vélib'</h2>
+      <ul id="velib-list"></ul>
+    </div>
+  </div>
+  <script>
+    const endpoints = {
+      rer: 'https://ton-worker.workers.dev?ref=STIF:StopPoint:Q:43135:',
+      bus: [
+        'https://ton-worker.workers.dev?ref=STIF:StopPoint:Q:463644:',
+        'https://ton-worker.workers.dev?ref=STIF:StopPoint:Q:463641:'
+      ],
+      velib: [
+        'https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_status.json',
+        'https://velib-metropole-opendata.smoove.pro/opendata/Velib_Metropole/station_information.json'
+      ]
+    };
+
+    async function fetchRER() {
+      const res = await fetch(endpoints.rer);
+      const data = await res.json();
+      const items = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit || [];
+      const list = document.getElementById('rer-list');
+      list.innerHTML = '';
+      items.forEach(item => {
+        const name = item.MonitoredVehicleJourney.PublishedLineName;
+        const dest = item.MonitoredVehicleJourney.DestinationName;
+        const time = item.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime;
+        const li = document.createElement('li');
+        li.textContent = `${name} → ${dest} à ${new Date(time).toLocaleTimeString()}`;
+        list.appendChild(li);
+      });
+    }
+
+    async function fetchBus() {
+      const list = document.getElementById('bus-list');
+      list.innerHTML = '';
+      for (const url of endpoints.bus) {
+        const res = await fetch(url);
+        const data = await res.json();
+        const items = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit || [];
+        items.forEach(item => {
+          const name = item.MonitoredVehicleJourney.PublishedLineName;
+          const dest = item.MonitoredVehicleJourney.DestinationName;
+          const time = item.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime;
+          const li = document.createElement('li');
+          li.textContent = `${name} → ${dest} à ${new Date(time).toLocaleTimeString()}`;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    async function fetchVelib() {
+      const statusRes = await fetch(endpoints.velib[0]);
+      const infoRes = await fetch(endpoints.velib[1]);
+      const statusData = await statusRes.json();
+      const infoData = await infoRes.json();
+      const targetStations = ['12128', '12163'];
+      const list = document.getElementById('velib-list');
+      list.innerHTML = '';
+      targetStations.forEach(id => {
+        const stat = statusData.data.stations.find(s => s.station_id === id);
+        const info = infoData.data.stations.find(s => s.station_id === id);
+        if (stat && info) {
+          const li = document.createElement('li');
+          li.textContent = `${info.name} : ${stat.num_bikes_available_types.find(t => t.bike_type === 'mechanical')?.count || 0} mécaniques, ${stat.num_bikes_available_types.find(t => t.bike_type === 'ebike')?.count || 0} électriques, ${stat.num_docks_available} places libres`;
+          list.appendChild(li);
+        }
+      });
+    }
+
+    function refreshAll() {
+      fetchRER();
+      fetchBus();
+      fetchVelib();
+    }
+
+    refreshAll();
+    setInterval(refreshAll, 60000);
+  </script>
+</body>
+</html>

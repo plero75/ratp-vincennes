@@ -1,0 +1,33 @@
+name: Scrape Equidia Vincennes (courses et horaires)
+
+on:
+  schedule:
+    - cron: '0 5 1 * *'    # Tous les 1ers du mois à 5h UTC (modifiable)
+  workflow_dispatch:
+
+jobs:
+  scrape-equidia-vincennes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps (node-fetch v2 + jsdom)
+        run: npm install node-fetch@2 jsdom
+
+      - name: Scrape Equidia Vincennes et maj races.json
+        run: node scripts/scrape-equidia-vincennes.js
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/races.json
+          git commit -m "Mise à jour courses Equidia Vincennes (auto)" || echo "Pas de modif"
+          git push

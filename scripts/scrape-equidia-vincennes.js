@@ -2,11 +2,10 @@ import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 import fs from "fs/promises";
 
-// 1. Config : changer le mois si besoin
 const mois = "2025-08";
 const base = "https://www.equidia.fr";
 const pageMois = `${base}/courses-hippique/trot?month=${mois}`;
-const lieuVincennes = "Vincennes";
+const lieuVincennes = "Paris-Vincennes";
 
 async function getJoursVincennes() {
   const html = await fetch(pageMois).then(r => r.text());
@@ -17,13 +16,14 @@ async function getJoursVincennes() {
     const lieu = link.querySelector(".meeting-card__title")?.textContent?.trim();
     const dateStr = link.querySelector(".meeting-card__date")?.textContent?.trim();
     if (!lieu || !dateStr) return;
-    if (lieu.toLowerCase().includes("vincennes")) {
-      // Date Equidia : "Dim. 11 août" -> on va chercher l’URL du détail, puis reparser pour date ISO
+    if (/paris-?vincennes/i.test(lieu)) {
       jours.push({ url, lieu, dateStr });
     }
   });
   return jours;
 }
+
+ 
 
 function normaliseDate(d) {
   // Prend "Dim. 11 août" ou "Ven. 30 août" et mois courant, retourne yyyy-mm-dd

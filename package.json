@@ -1,0 +1,13 @@
+{
+  "name": "vhp5",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "update-gtfs": "node scripts/update-gtfs.js"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.4",
+    "unzipper": "^0.10.11",
+    "node-fetch": "^2.6.9"
+  }
+}

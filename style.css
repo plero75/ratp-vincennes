@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: #f1f1f1;
+  color: #222;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #003366;
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1.5em;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.transport-block {
+  background: #fff;
+  border-left: 5px solid #444;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px #0001;
+  min-height: 150px;
+}
+
+.transport-block h2 {
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #222;
+  color: #eee;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+#nextRace, #courses-content {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-left: 5px solid #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #222;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.8em;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  line-height: 36px;
+  text-align: center;
+  color: white;
+}
+.logo-rer { background: #d32029; }
+.logo-bus201 { background: #2c7a26; }
+.logo-bus77 { background: #0077c2; }
+
+.directions { font-size: 0.9em; color: #444; flex-grow: 1; }
+.alert-banner {
+  background: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.schedules { font-size: 1em; line-height: 1.4; }
+.firstlast { margin-top: 6px; font-size: 0.85em; color: #666; }
+
+.stops-scroll {
+  margin-top: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+  animation: scroll-left 25s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+a:focus, button:focus, .logo:focus {
+  outline: 2px solid #003366;
+  outline-offset: 2px;
+}

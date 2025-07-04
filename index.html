@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Temps réel - Transports Hippodrome de Vincennes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard Mobilité – Hippodrome Vincennes</title>
+<link rel="stylesheet" href="style.css" />
+<script type="module" src="script.js" defer></script>
 </head>
-<body class="bg-light text-dark">
-  <div class="container mt-4">
-    <h1 class="fw-bold">Temps réel - Transports Hippodrome de Vincennes</h1>
-    <p id="lastUpdate" class="text-muted"></p>
-
-    <div class="card mt-4">
-      <div class="card-body">
-        <h2 class="card-title">🚆 RER A - Joinville-le-Pont</h2>
-        <div id="rer-directions"></div>
+<body>
+  <header>
+    <h1>🚦 Dashboard Mobilité – Hippodrome Vincennes <span id="datetime"></span></h1>
+  </header>
+  <main class="grid">
+    <section id="rer" class="transport-block">
+      <div class="header">
+        <div class="logo logo-rer">A</div>
+        <h2>RER A - Joinville-le-Pont</h2>
+        <div class="directions">Vers La Défense / Marne-la-Vallée</div>
       </div>
-    </div>
-  </div>
+      <div id="rer-alert" class="alert-banner"></div>
+      <div id="rer-schedules" class="schedules"></div>
+      <div id="rer-firstlast" class="firstlast"></div>
+    </section>
 
-  <script>
-    async function fetchRer() {
-      try {
-        const res = await fetch("https://ratp-proxy.hippodrome-proxy42.workers.dev/?ref=STIF:StopPoint:Q:43135");
-        const data = await res.json();
-        const visits = data.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit;
-        const now = new Date();
+    <section id="bus201" class="transport-block">
+      <div class="header">
+        <div class="logo logo-bus201">201</div>
+        <h2>Bus 201 - Pyramide – École du Breuil</h2>
+        <div class="directions">Vers Château de Vincennes / Maisons-Alfort</div>
+      </div>
+      <div id="bus201-alert" class="alert-banner"></div>
+      <div id="bus201-schedules" class="schedules"></div>
+      <div id="bus201-firstlast" class="firstlast"></div>
+    </section>
 
-        const groupedByDirection = {};
+    <section id="bus77" class="transport-block">
+      <div class="header">
+        <div class="logo logo-bus77">77</div>
+        <h2>Bus 77 - Hippodrome de Vincennes</h2>
+        <div class="directions">Vers Joinville-le-Pont / Porte de Vincennes</div>
+      </div>
+      <div id="bus77-alert" class="alert-banner"></div>
+      <div id="bus77-schedules" class="schedules"></div>
+      <div id="bus77-firstlast" class="firstlast"></div>
+    </section>
 
-        visits.forEach(visit => {
-          const dest = visit.MonitoredVehicleJourney.DestinationName[0].value;
-          const aimed = new Date(visit.MonitoredVehicleJourney.MonitoredCall.AimedArrivalTime);
-          const diffMin = Math.round((aimed - now) / 60000);
+    <section id="meteo" class="transport-block">
+      <h2>🌤 Météo locale</h2>
+    </section>
 
-          if (diffMin >= 2) {
-            if (!groupedByDirection[dest]) groupedByDirection[dest] = [];
-            groupedByDirection[dest].push({
-              time: aimed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-              min: diffMin
-            });
-          }
-        });
+    <section id="courses" class="transport-block">
+      <h2>🏇 Courses à Vincennes</h2>
+      <div id="courses-content"></div> <!-- ✅ Ajouté -->
+    </section>
 
-        const container = document.getElementById("rer-directions");
-        for (const direction in groupedByDirection) {
-          const ul = document.createElement("ul");
-          groupedByDirection[direction].forEach(j => {
-            const li = document.createElement("li");
-            li.textContent = `Dans ${j.min} min (${j.time}) vers ${direction}`;
-            ul.appendChild(li);
-          });
-          const h5 = document.createElement("h5");
-          h5.textContent = direction;
-          container.appendChild(h5);
-          container.appendChild(ul);
-        }
-
-        document.getElementById("lastUpdate").textContent =
-          "Dernière mise à jour : " + now.toLocaleString("fr-FR");
-      } catch (error) {
-        document.getElementById("rer-directions").textContent = "Erreur de chargement des horaires.";
-      }
-    }
-
-    fetchRer();
-  </script>
+    <section id="newsTicker" class="transport-block">
+      <h2>📰 Actualités</h2>
+      <div id="news-content"></div> <!-- ✅ Ajouté -->
+    </section>
+  </main>
 </body>
 </html>

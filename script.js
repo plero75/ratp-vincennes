@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   loop();
   setInterval(loop, 60_000);
   startWeatherLoop();
-  trouverProchaineCourseVincennes();
+  afficherProchaineCourseVincennes();
+  afficherToutesCoursesVincennes();
 });
 
 function loop() {
@@ -185,18 +186,21 @@ async function news() {
     elNews.textContent = (await r.json()).items.slice(0,3).map(i=>i.title).join(" • ");
   } catch { elNews.textContent = "Actus indisponibles"; }
 }
- // Affiche la prochaine course Vincennes depuis Equidia (races.json)
+
+// ----------- COURSES VINCENNES Equidia JSON -----------
+
+// Affiche la prochaine course Vincennes (date + heure si présent)
 async function afficherProchaineCourseVincennes() {
   const el = document.getElementById("nextRace");
   try {
     const data = await fetch("static/races.json").then(r => r.json());
     const now = new Date();
-
-    // Si ton races.json n'a que {date, lieu, type} :
     const prochaines = data
       .map(r => ({
         ...r,
-        dateTime: new Date(r.date)
+        dateTime: r.heure
+          ? new Date(`${r.date}T${r.heure.length === 5 ? r.heure + ':00' : r.heure}`)
+          : new Date(r.date)
       }))
       .filter(r => r.dateTime >= now)
       .sort((a, b) => a.dateTime - b.dateTime);
@@ -207,7 +211,7 @@ async function afficherProchaineCourseVincennes() {
       return;
     }
 
-    const options = { weekday: "short", day: "2-digit", month: "2-digit" };
+    const options = { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" };
     const dateStr = prochaine.dateTime.toLocaleString("fr-FR", options);
     el.innerHTML = `🏇 Prochaine réunion : <b>${prochaine.lieu}</b> (${prochaine.type})<br>📅 ${dateStr}`;
   } catch (e) {
@@ -216,8 +220,39 @@ async function afficherProchaineCourseVincennes() {
   }
 }
 
-// Appel au chargement de la page
-document.addEventListener('DOMContentLoaded', afficherProchaineCourseVincennes);
+// Affiche toutes les courses Vincennes à venir
+async function afficherToutesCoursesVincennes() {
+  const el = document.getElementById("courses-content");
+  try {
+    const data = await fetch("static/races.json").then(r => r.json());
+    const now = new Date();
+    const prochaines = data
+      .map(r => ({
+        ...r,
+        dateTime: r.heure
+          ? new Date(`${r.date}T${r.heure.length === 5 ? r.heure + ':00' : r.heure}`)
+          : new Date(r.date)
+      }))
+      .filter(r => r.dateTime >= now)
+      .sort((a, b) => a.dateTime - b.dateTime);
+
+    if (!prochaines.length) {
+      el.innerHTML = "<i>Aucune course Vincennes à venir.</i>";
+      return;
+    }
+
+    el.innerHTML = prochaines.map(c =>
+      `<div class="course">
+        <b>${c.date}${c.heure ? ' ' + c.heure : ''}</b> – ${c.lieu} (${c.type})
+      </div>`
+    ).join('');
+  } catch (err) {
+    console.error('Erreur Equidia:', err);
+    el.innerHTML = "<b>Erreur de chargement des courses.</b>";
+  }
+}
+
+// ----------- MÉTÉO -----------
 
 async function meteo() {
   const el = document.getElementById("meteo");
@@ -239,51 +274,4 @@ function parseTimeToDate(timeStr) {
   const d = new Date();
   d.setHours(hours, minutes, 0, 0);
   return d;
-}
-
-async function trouverProchaineCourseVincennes() {
-  const elCourses = document.getElementById("courses-content");
-  const now = new Date();
-  let dateToCheck = new Date(now);
-
-  for (let i=0; i<15; i++) {
-    const dateStr = dateToCheck.toISOString().slice(0,10).split("-").reverse().join("");
-    const url = `https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/${dateStr}`;
-    const res = await fetch(url);
-    if (!res.ok) continue;
-    const data = await res.json();
-
-    for (const reunion of data.reunions) {
-      if (reunion.hippodrome.nomCourt.toUpperCase() === "VINCENNES") {
-        const firstCourse = reunion.courses[0];
-        const courseDateTime = new Date(`${dateToCheck.toISOString().slice(0,10)}T${firstCourse.heureDepart}`);
-        lancerCompteARebours(courseDateTime, firstCourse.libelle, elCourses);
-        return;
-      }
-    }
-    dateToCheck.setDate(dateToCheck.getDate() + 1);
-  }
-  elCourses.innerHTML = "Aucune course prévue à Vincennes dans les 15 prochains jours.";
-}
-
-function lancerCompteARebours(targetDate, courseName, el) {
-  function update() {
-    const now = new Date();
-    let diffMs = targetDate - now;
-    if (diffMs <= 0) {
-      el.innerHTML = `La prochaine course « ${courseName} » est en cours ou terminée !`;
-      clearInterval(intervalId);
-      return;
-    }
-    const diffSec = Math.floor(diffMs/1000);
-    const days = Math.floor(diffSec/86400);
-    const hours = Math.floor((diffSec%86400)/3600);
-    const minutes = Math.floor((diffSec%3600)/60);
-    const seconds = diffSec%60;
-
-    const countdown = `${days} jour${days!==1?"s":""} ${hours} heure${hours!==1?"s":""} ${minutes} minute${minutes!==1?"s":""} et ${seconds} seconde${seconds!==1?"s":""}`;
-    el.innerHTML = `Prochaine course à l’Hippodrome de Vincennes dans ${countdown} : « ${courseName} »`;
-  }
-  update();
-  const intervalId = setInterval(update, 1000);
 }

@@ -24,7 +24,7 @@ jobs:
       - name: Scrape Equidia Vincennes et maj races.json
         run: node scripts/scrape-equidia-vincennes.js
 
-         - name: Commit changes
+      - name: Commit changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -33,4 +33,3 @@ jobs:
           git fetch origin main
           git rebase origin/main
           git push
-

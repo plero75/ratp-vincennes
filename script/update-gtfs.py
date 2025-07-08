@@ -1,10 +1,10 @@
-
 import zipfile
 import pandas as pd
 import requests
 from io import BytesIO
 from datetime import datetime, timedelta
 import json
+import collections
 
 GTFS_URL = "https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM-gtfs.zip"
 
@@ -17,8 +17,9 @@ TARGETS = [
 ]
 
 today = datetime.now().date()
-days = [today + timedelta(days=i) for i in range(1)]
+days = [today + timedelta(days=i) for i in range(1)]  # Pour un seul jour (aujourd'hui)
 
+print("Téléchargement des données GTFS…")
 resp = requests.get(GTFS_URL)
 z = zipfile.ZipFile(BytesIO(resp.content))
 
@@ -29,7 +30,12 @@ calendar = pd.read_csv(z.open("calendar.txt"))
 calendar_dates = pd.read_csv(z.open("calendar_dates.txt")) if "calendar_dates.txt" in z.namelist() else pd.DataFrame()
 routes = pd.read_csv(z.open("routes.txt"))
 
-result = {}
+# Initialisation des structures de stockage
+rer_horaires = []
+bus_data = {
+    "77": {"horaires": [], "gares_par_destination": collections.OrderedDict()},
+    "201": {"horaires": [], "gares_par_destination": collections.OrderedDict()},
+}
 
 for target in TARGETS:
     nom = target["nom"]
@@ -43,13 +49,7 @@ for target in TARGETS:
 
     trips_line = trips[trips['route_id'] == route_id]
 
-    if nom not in result:
-        result[nom] = {}
-    if ligne not in result[nom]:
-        result[nom][ligne] = {}
-
     for day in days:
-        day_str = day.strftime("%Y-%m-%d")
         dow = day.weekday()
         active_service_ids = []
         for idx, row in calendar.iterrows():
@@ -71,8 +71,6 @@ for target in TARGETS:
         trips_today = trips_line[trips_line['service_id'].isin(active_service_ids)]
         trip_ids_today = trips_today['trip_id'].tolist()
 
-        horaires_today = []
-
         for trip_id in trip_ids_today:
             stops_this_trip = stop_times[(stop_times['trip_id'] == trip_id) & (stop_times['stop_id'].isin(stop_ids))]
             for _, st in stops_this_trip.iterrows():
@@ -80,17 +78,34 @@ for target in TARGETS:
                 stop_seq = st['stop_sequence']
                 dest = trips_today[trips_today['trip_id'] == trip_id]['trip_headsign'].values[0] if 'trip_headsign' in trips_today.columns else "?"
                 remaining = stop_times[(stop_times['trip_id'] == trip_id) & (stop_times['stop_sequence'] > stop_seq)]
-                remaining_stops = stops[stops['stop_id'].isin(remaining['stop_id'])][['stop_id', 'stop_name']]
-                horaires_today.append({
-                    "time": time_str,
-                    "destination": dest,
-                    "remaining_stops": remaining_stops['stop_name'].tolist()
-                })
+                remaining_stops = stops[stops['stop_id'].isin(remaining['stop_id'])]['stop_name'].tolist()
 
-        horaires_today = sorted(horaires_today, key=lambda x: x["time"])
-        result[nom][ligne][day_str] = horaires_today
+                # Si c'est la ligne RER A
+                if ligne == "RER A":
+                    rer_horaires.append({
+                        "time": time_str,
+                        "destination": dest,
+                        "gares_restantes": remaining_stops
+                    })
+                # Sinon c'est un bus, on mutualise par destination
+                else:
+                    bus_data[ligne]["horaires"].append({
+                        "time": time_str,
+                        "destination": dest
+                    })
+                    # Stocker la séquence des arrêts UNE SEULE FOIS par destination
+                    if dest not in bus_data[ligne]["gares_par_destination"]:
+                        bus_data[ligne]["gares_par_destination"][dest] = remaining_stops
+
+# Construction du résultat final
+export_data = {
+    "rer": {"horaires": rer_horaires},
+    "bus77": bus_data["77"],
+    "bus201": bus_data["201"],
+    "lastFetch": int(datetime.now().timestamp())
+}
 
 with open("static/horaires_export.json", "w", encoding="utf-8") as f:
-    json.dump(result, f, indent=2, ensure_ascii=False)
+    json.dump(export_data, f, indent=2, ensure_ascii=False)
 
-print("✅ Horaires GTFS exportés dans static/horaires_export.json")
+print("✅ Horaires GTFS optimisés exportés dans static/horaires_export.json")

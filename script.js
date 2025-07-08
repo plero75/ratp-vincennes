@@ -54,6 +54,13 @@ function fetchAll() {
   news();
 }
 
+function createHorizontalScroller(stops) {
+  // Bandeau scrollable horizontal moderne
+  return `<div class="stops-scroll">
+    🚏 ${stops.map(s => `<span>${s}</span>`).join('➔')}
+  </div>`;
+}
+
 async function horaire(id, stop, title) {
   const scheduleEl = document.getElementById(`${id}-schedules`);
   const alertEl = document.getElementById(`${id}-alert`);
@@ -63,9 +70,11 @@ async function horaire(id, stop, title) {
     const data = await fetch(url).then(r => r.json());
     const visits = data.Siri.ServiceDelivery.StopMonitoringDelivery[0]?.MonitoredStopVisit || [];
 
-    let horairesHTML = "";
+    // 🔹 Affichage premier/dernier départs si connu
     const fl = cache.firstLast?.[id];
-    if (fl) firstlastEl.innerHTML = `♦️ ${fl.first} – ${fl.last}`;
+    if (fl && firstlastEl) firstlastEl.innerHTML = `Premier départ : <b>${fl.first}</b> <span style="margin-left:20px">Dernier : <b>${fl.last}</b></span>`;
+
+    let horairesHTML = "";
 
     if (!visits.length) {
       const now = new Date();
@@ -83,6 +92,7 @@ async function horaire(id, stop, title) {
       return;
     }
 
+    // Grouper les passages par destination
     const passagesByDest = {};
     for (let v of visits.slice(0, 8)) {
       const call = v.MonitoredVehicleJourney.MonitoredCall;
@@ -99,6 +109,13 @@ async function horaire(id, stop, title) {
       const timeToExpMin = Math.max(0, Math.round((expFirst - now)/60000));
       const timeStr = expFirst.toLocaleTimeString("fr-FR",{hour:'2-digit',minute:'2-digit'});
       horairesHTML += `<h3>Vers ${dest} – prochain départ dans : ${timeToExpMin} min (à ${timeStr})</h3>`;
+
+      // -------- Affichage des arrêts desservis : une seule fois par destination, juste sous le titre
+      if (callFirst && first.MonitoredVehicleJourney?.VehicleJourneyRef) {
+        const journey = first.MonitoredVehicleJourney.VehicleJourneyRef;
+        horairesHTML += `<div id="gares-${id}-${journey}" class="stops-scroll" style="margin-bottom:8px;">🚉 …</div>`;
+        loadStops(journey, `${id}-${journey}`);
+      }
 
       passages.forEach((v, idx) => {
         const call = v.MonitoredVehicleJourney.MonitoredCall;
@@ -135,14 +152,6 @@ async function horaire(id, stop, title) {
           ligne += `🕒 ${exp.toLocaleTimeString("fr-FR",{hour:'2-digit',minute:'2-digit'})} → ${dest} ${crowd} <b>${tag}</b> (dans ${timeToExpMin} min)<br>`;
         }
         horairesHTML += ligne;
-
-        if (idx === 0) {
-          const journey = v.MonitoredVehicleJourney?.VehicleJourneyRef;
-          if (journey) {
-            horairesHTML += `<div id="gares-${journey}" class="stops-scroll">🚉 …</div>`;
-            loadStops(journey);
-          }
-        }
       });
 
       const alert = await lineAlert(stop);
@@ -169,15 +178,18 @@ async function lineAlert(stop) {
   } catch { return ""; }
 }
 
-async function loadStops(journey) {
+// -------- Affichage horizontal dynamique des arrêts desservis --------
+async function loadStops(journey, targetId) {
   try {
     const url = proxy + encodeURIComponent(`https://prim.iledefrance-mobilites.fr/marketplace/vehicle_journeys/${journey}`);
     const data = await fetch(url).then(r => r.ok ? r.json() : null);
-    const list = data?.vehicle_journeys?.[0]?.stop_times?.map(s => s.stop_point.name).join(" ➔ ");
-    const div = document.getElementById(`gares-${journey}`);
-    if (div) div.textContent = list ? `🚉 ${list}` : "";
+    const list = data?.vehicle_journeys?.[0]?.stop_times?.map(s => s.stop_point.name);
+    const div = document.getElementById(`gares-${targetId}`);
+    if (div) div.innerHTML = list && list.length > 0 ? createHorizontalScroller(list) : "";
   } catch { /* ignore */ }
 }
+
+// ------------- Actus, météo, courses : inchangé ------------------
 
 async function news() {
   const elNews = document.getElementById("news-content");
@@ -187,9 +199,6 @@ async function news() {
   } catch { elNews.textContent = "Actus indisponibles"; }
 }
 
-// ----------- COURSES VINCENNES Equidia JSON -----------
-
-// Affiche la prochaine course Vincennes (date + heure si présent)
 async function afficherProchaineCourseVincennes() {
   const el = document.getElementById("nextRace");
   try {
@@ -220,7 +229,6 @@ async function afficherProchaineCourseVincennes() {
   }
 }
 
-// Affiche toutes les courses Vincennes à venir
 async function afficherToutesCoursesVincennes() {
   const el = document.getElementById("courses-content");
   try {
@@ -251,8 +259,6 @@ async function afficherToutesCoursesVincennes() {
     el.innerHTML = "<b>Erreur de chargement des courses.</b>";
   }
 }
-
-// ----------- MÉTÉO -----------
 
 async function meteo() {
   const el = document.getElementById("meteo");

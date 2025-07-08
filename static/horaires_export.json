@@ -1,0 +1,260 @@
+{
+  "Hippodrome de Vincennes": {
+    "77": {
+      "2025-07-08": []
+    }
+  },
+  "École du Breuil": {
+    "201": {
+      "2025-07-08": [
+        {
+          "time": "05:30",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "05:36",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "05:57",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "06:12",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "06:51",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "07:24",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "07:42",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "10:02",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "11:01",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "15:41",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "17:53",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "19:16",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "19:44",
+          "destination": "Champigny - Diderot - La Plage",
+          "remaining_stops": [
+            "Champigny - Diderot - La Plage",
+            "Dagoty",
+            "Joinville-le-Pont RER",
+            "Verdun",
+            "Carrefour de la Résistance",
+            "Charles Floquet - Diderot",
+            "Bel Air",
+            "Verdun - Charles Floquet",
+            "Verdun - La Plage",
+            "Jacques Decour",
+            "Diane"
+          ]
+        },
+        {
+          "time": "21:44",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        },
+        {
+          "time": "22:44",
+          "destination": "Porte Dorée",
+          "remaining_stops": [
+            "Plaine de la Faluère",
+            "Stade Léo Lagrange",
+            "Demi Lune - Parc Zoologique",
+            "Mortemart",
+            "Pyramide - Parc Floral",
+            "Porte Dorée",
+            "Parc Zoologique",
+            "Alphand",
+            "Tourelle - Daumesnil"
+          ]
+        }
+      ]
+    },
+    "77": {
+      "2025-07-08": []
+    }
+  },
+  "Joinville-le-Pont": {
+    "RER A": {
+      "2025-07-08": []
+    }
+  }
+}

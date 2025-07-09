@@ -13,11 +13,11 @@ TARGETS = [
     {"nom": "Hippodrome de Vincennes", "parent_station": "IDFM:463642", "route_id": "IDFM:C02251", "ligne": "77"},
     {"nom": "École du Breuil", "parent_station": "IDFM:463645", "route_id": "IDFM:C01219", "ligne": "201"},
     {"nom": "École du Breuil", "parent_station": "IDFM:463645", "route_id": "IDFM:C02251", "ligne": "77"},
-    {"nom": "Joinville-le-Pont", "parent_station": "IDFM:70640", "route_id": "IDFM:C01742", "ligne": "RER A"},
+    {"nom": "Joinville-le-Pont", "parent_station": "IDFM:70640", "route_id": "STIF:Line::C01742:", "ligne": "RER A"},
 ]
 
 today = datetime.now().date()
-days = [today + timedelta(days=i) for i in range(1)]  # Pour un seul jour (aujourd'hui)
+days = [today + timedelta(days=i) for i in range(1)]  # Aujourd'hui uniquement
 
 print("Téléchargement des données GTFS…")
 resp = requests.get(GTFS_URL)
@@ -43,17 +43,21 @@ for target in TARGETS:
     route_id = target["route_id"]
     ligne = target["ligne"]
 
-    stop_ids = stops[stops['parent_station'] == parent_station]['stop_id'].tolist()
-    print(f"[DEBUG] {nom} → stop_ids : {stop_ids}")
-    if parent_station in stops['stop_id'].values:
-        stop_ids.append(parent_station)
+    # Gestion spéciale pour Joinville → RER A
+    if ligne == "RER A":
+        stop_ids = stops[stops['stop_name'].str.contains("Joinville", case=False, na=False)]['stop_id'].tolist()
+    else:
+        stop_ids = stops[stops['parent_station'] == parent_station]['stop_id'].tolist()
+        if parent_station in stops['stop_id'].values:
+            stop_ids.append(parent_station)
 
+    print(f"[DEBUG] {nom} → stop_ids : {stop_ids}")
     trips_line = trips[trips['route_id'] == route_id]
 
     for day in days:
         dow = day.weekday()
         active_service_ids = []
-        for idx, row in calendar.iterrows():
+        for _, row in calendar.iterrows():
             start = datetime.strptime(str(row['start_date']), "%Y%m%d").date()
             end = datetime.strptime(str(row['end_date']), "%Y%m%d").date()
             if not (start <= day <= end):
@@ -81,24 +85,21 @@ for target in TARGETS:
                 remaining = stop_times[(stop_times['trip_id'] == trip_id) & (stop_times['stop_sequence'] > stop_seq)]
                 remaining_stops = stops[stops['stop_id'].isin(remaining['stop_id'])]['stop_name'].tolist()
 
-                # Si c'est la ligne RER A
                 if ligne == "RER A":
                     rer_horaires.append({
                         "time": time_str,
                         "destination": dest,
                         "gares_restantes": remaining_stops
                     })
-                # Sinon c'est un bus, on mutualise par destination
                 else:
                     bus_data[ligne]["horaires"].append({
                         "time": time_str,
                         "destination": dest
                     })
-                    # Stocker la séquence des arrêts UNE SEULE FOIS par destination
                     if dest not in bus_data[ligne]["gares_par_destination"]:
                         bus_data[ligne]["gares_par_destination"][dest] = remaining_stops
 
-# Construction du résultat final
+# Construction du JSON final
 export_data = {
     "rer": {"horaires": rer_horaires},
     "bus77": bus_data["77"],

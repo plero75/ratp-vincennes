@@ -34,6 +34,10 @@ async function fetchTrafficMessages(lineId) {
 
 async function fetchAll() {
   clock();
+  // récupération des données classiques
+  // (garde ton code d'origine ici)
+
+  // ➕ Ajout info trafic via PRIM
   for (const stopId of Object.keys(lineMap)) {
     const lineId = lineMap[stopId];
     const trafficMessage = await fetchTrafficMessages(lineId);

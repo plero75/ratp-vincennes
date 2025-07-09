@@ -18,6 +18,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   afficherToutesCoursesVincennes();
 });
 
+
+async function fetchTrafficMessages(lineId) {
+  try {
+    const response = await fetch(`${proxy}/marketplace/v2/general-message?lineRef=${lineId}`);
+    const data = await response.json();
+    if (data && data.messages && data.messages.length > 0) {
+      return data.messages.map(msg => msg.message).join(" / ");
+    }
+  } catch (error) {
+    console.error("Erreur récupération trafic PRIM :", error);
+  }
+  return null;
+}
+
+async function fetchAll() {
+  clock();
+  for (const stopId of Object.keys(lineMap)) {
+    const lineId = lineMap[stopId];
+    const trafficMessage = await fetchTrafficMessages(lineId);
+    const container = document.getElementById(`trafic-${stopId}`);
+    if (container) {
+      container.innerHTML = trafficMessage
+        ? `<div class='alerte-trafic'>⚠️ ${trafficMessage}</div>`
+        : '';
+    }
+  }
+}
+
+
 function loop() {
   clock();
   fetchAll();
@@ -280,4 +309,29 @@ function parseTimeToDate(timeStr) {
   const d = new Date();
   d.setHours(hours, minutes, 0, 0);
   return d;
+}
+
+
+
+async function loadStops(journeyId) {
+  if (!journeyId) return; // sécurité
+  const div = document.getElementById(`gares-${journeyId}`);
+  if (!div) return;
+
+  try {
+    const url = proxy + encodeURIComponent(
+      `https://prim.iledefrance-mobilites.fr/marketplace/vehicle_journeys/${journeyId}`
+    );
+    const data = await fetch(url).then(r => r.json());
+
+    const names = data.vehicle_journeys?.[0]?.stop_times
+      ?.map(s => s.stop_point.name)
+      ?.join(" ➔ ");
+
+    div.innerHTML = names
+      ? `<marquee scrollamount="4">🚉 ${names}</marquee>`
+      : "";
+  } catch {
+    div.textContent = ""; // silencieux
+  }
 }

@@ -13,7 +13,7 @@ TARGETS = [
     {"nom": "Hippodrome de Vincennes", "parent_station": "IDFM:463642", "route_id": "IDFM:C02251", "ligne": "77"},
     {"nom": "École du Breuil", "parent_station": "IDFM:463645", "route_id": "IDFM:C01219", "ligne": "201"},
     {"nom": "École du Breuil", "parent_station": "IDFM:463645", "route_id": "IDFM:C02251", "ligne": "77"},
-    {"nom": "Joinville-le-Pont", "parent_station": "IDFM:70640", "route_id": "STIF:Line::C01742:", "ligne": "RER A"},
+    {"nom": "Joinville-le-Pont", "parent_station": "IDFM:70640", "route_id": "IDFM:C01742", "ligne": "RER A"},
 ]
 
 today = datetime.now().date()
@@ -44,6 +44,7 @@ for target in TARGETS:
     ligne = target["ligne"]
 
     stop_ids = stops[stops['parent_station'] == parent_station]['stop_id'].tolist()
+    print(f"[DEBUG] {nom} → stop_ids : {stop_ids}")
     if parent_station in stops['stop_id'].values:
         stop_ids.append(parent_station)
 

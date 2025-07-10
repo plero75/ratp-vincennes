@@ -71,14 +71,14 @@
     ],
     "gares_par_destination": {
       "Porte Dorée": [
-        "Plaine de la Faluère",
-        "Stade Léo Lagrange",
         "Demi Lune - Parc Zoologique",
         "Mortemart",
         "Pyramide - Parc Floral",
         "Porte Dorée",
         "Parc Zoologique",
         "Alphand",
+        "Stade Léo Lagrange",
+        "Plaine de la Faluère",
         "Tourelle - Daumesnil"
       ],
       "Champigny - Diderot - La Plage": [
@@ -96,5 +96,5 @@
       ]
     }
   },
-  "lastFetch": 1752035374
+  "lastFetch": 1752121674
 }

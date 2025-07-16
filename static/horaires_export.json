@@ -9,55 +9,7 @@
   "bus201": {
     "horaires": [
       {
-        "time": "17:53",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "22:44",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "21:44",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "19:16",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "11:01",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "07:42",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "06:51",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "05:30",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "19:44",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "15:41",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "10:02",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "07:24",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "06:12",
+        "time": "05:36",
         "destination": "Champigny - Diderot - La Plage"
       },
       {
@@ -65,22 +17,59 @@
         "destination": "Champigny - Diderot - La Plage"
       },
       {
-        "time": "05:36",
+        "time": "06:12",
         "destination": "Champigny - Diderot - La Plage"
+      },
+      {
+        "time": "07:24",
+        "destination": "Champigny - Diderot - La Plage"
+      },
+      {
+        "time": "10:02",
+        "destination": "Champigny - Diderot - La Plage"
+      },
+      {
+        "time": "15:41",
+        "destination": "Champigny - Diderot - La Plage"
+      },
+      {
+        "time": "19:44",
+        "destination": "Champigny - Diderot - La Plage"
+      },
+      {
+        "time": "05:30",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "06:51",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "07:42",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "11:01",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "19:16",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "21:44",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "22:44",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "17:53",
+        "destination": "Porte Dorée"
       }
     ],
     "gares_par_destination": {
-      "Porte Dorée": [
-        "Plaine de la Faluère",
-        "Stade Léo Lagrange",
-        "Demi Lune - Parc Zoologique",
-        "Mortemart",
-        "Pyramide - Parc Floral",
-        "Porte Dorée",
-        "Parc Zoologique",
-        "Alphand",
-        "Tourelle - Daumesnil"
-      ],
       "Champigny - Diderot - La Plage": [
         "Champigny - Diderot - La Plage",
         "Dagoty",
@@ -93,8 +82,19 @@
         "Verdun - La Plage",
         "Jacques Decour",
         "Diane"
+      ],
+      "Porte Dorée": [
+        "Plaine de la Faluère",
+        "Stade Léo Lagrange",
+        "Demi Lune - Parc Zoologique",
+        "Mortemart",
+        "Pyramide - Parc Floral",
+        "Porte Dorée",
+        "Parc Zoologique",
+        "Alphand",
+        "Tourelle - Daumesnil"
       ]
     }
   },
-  "lastFetch": 1752554078
+  "lastFetch": 1752640432
 }

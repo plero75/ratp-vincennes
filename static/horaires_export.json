@@ -1361,11 +1361,7 @@
         "destination": "Porte Dorée"
       },
       {
-        "time": "19:44",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:16",
+        "time": "17:53",
         "destination": "Porte Dorée"
       },
       {
@@ -1373,8 +1369,12 @@
         "destination": "Porte Dorée"
       },
       {
-        "time": "17:53",
+        "time": "19:16",
         "destination": "Porte Dorée"
+      },
+      {
+        "time": "19:44",
+        "destination": "Champigny - Diderot - La Plage"
       },
       {
         "time": "18:45",
@@ -1412,5 +1412,5 @@
       ]
     }
   },
-  "lastFetch": 1753936908
+  "lastFetch": 1754024053
 }

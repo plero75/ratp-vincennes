@@ -393,6 +393,10 @@
         "destination": "Gare de Lyon"
       },
       {
+        "time": "23:16",
+        "destination": "Joinville-le-Pont RER"
+      },
+      {
         "time": "06:31",
         "destination": "Joinville-le-Pont RER"
       },
@@ -414,10 +418,6 @@
       },
       {
         "time": "22:26",
-        "destination": "Joinville-le-Pont RER"
-      },
-      {
-        "time": "23:16",
         "destination": "Joinville-le-Pont RER"
       },
       {
@@ -813,6 +813,10 @@
         "destination": "Gare de Lyon"
       },
       {
+        "time": "23:20",
+        "destination": "Joinville-le-Pont RER"
+      },
+      {
         "time": "06:35",
         "destination": "Joinville-le-Pont RER"
       },
@@ -837,10 +841,6 @@
         "destination": "Joinville-le-Pont RER"
       },
       {
-        "time": "23:20",
-        "destination": "Joinville-le-Pont RER"
-      },
-      {
         "time": "16:25",
         "destination": "Joinville-le-Pont RER"
       }
@@ -853,20 +853,20 @@
       "Gare de Lyon": [
         "Porte de Reuilly",
         "Charenton- Wattignies",
-        "Vacassy - Santé publique",
+        "Gravelle - Reuilly",
+        "Gravelle - Liberté",
+        "Gravelle - Jaurès",
         "Nicolaï",
+        "Vacassy - Santé publique",
         "Plateau de Gravelle",
         "Route de la Terrasse",
         "Hôpitaux de Saint-Maurice",
         "Porte de Charenton",
         "Wattignies - Gravelle",
-        "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Gare de Bercy",
+        "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Dugommier",
-        "Gare de Lyon",
-        "Gravelle - Reuilly",
-        "Gravelle - Liberté",
-        "Gravelle - Jaurès"
+        "Gare de Lyon"
       ]
     }
   },
@@ -1361,15 +1361,11 @@
         "destination": "Champigny - Diderot - La Plage"
       },
       {
-        "time": "19:31",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:45",
+        "time": "19:44",
         "destination": "Champigny - Diderot - La Plage"
       },
       {
-        "time": "17:53",
+        "time": "19:16",
         "destination": "Porte Dorée"
       },
       {
@@ -1377,18 +1373,22 @@
         "destination": "Porte Dorée"
       },
       {
-        "time": "19:16",
+        "time": "17:53",
         "destination": "Porte Dorée"
       },
       {
-        "time": "19:44",
+        "time": "19:31",
+        "destination": "Porte Dorée"
+      },
+      {
+        "time": "18:45",
         "destination": "Champigny - Diderot - La Plage"
       }
     ],
     "gares_par_destination": {
       "Porte Dorée": [
-        "Plaine de la Faluère",
         "Stade Léo Lagrange",
+        "Plaine de la Faluère",
         "Demi Lune - Parc Zoologique",
         "Mortemart",
         "Pyramide - Parc Floral",
@@ -1405,12 +1405,12 @@
         "Bel Air",
         "Champigny - Diderot - La Plage",
         "Dagoty",
-        "Joinville-le-Pont RER",
         "Verdun",
         "Carrefour de la Résistance",
+        "Joinville-le-Pont RER",
         "Charles Floquet - Diderot"
       ]
     }
   },
-  "lastFetch": 1754887575
+  "lastFetch": 1754973099
 }

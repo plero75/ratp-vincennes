@@ -393,11 +393,7 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "23:16",
-        "destination": "Joinville-le-Pont RER"
-      },
-      {
-        "time": "06:31",
+        "time": "22:26",
         "destination": "Joinville-le-Pont RER"
       },
       {
@@ -413,11 +409,15 @@
         "destination": "Joinville-le-Pont RER"
       },
       {
+        "time": "06:31",
+        "destination": "Joinville-le-Pont RER"
+      },
+      {
         "time": "23:41",
         "destination": "Joinville-le-Pont RER"
       },
       {
-        "time": "22:26",
+        "time": "23:16",
         "destination": "Joinville-le-Pont RER"
       },
       {
@@ -813,11 +813,7 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "23:20",
-        "destination": "Joinville-le-Pont RER"
-      },
-      {
-        "time": "06:35",
+        "time": "22:30",
         "destination": "Joinville-le-Pont RER"
       },
       {
@@ -833,11 +829,15 @@
         "destination": "Joinville-le-Pont RER"
       },
       {
+        "time": "06:35",
+        "destination": "Joinville-le-Pont RER"
+      },
+      {
         "time": "23:45",
         "destination": "Joinville-le-Pont RER"
       },
       {
-        "time": "22:30",
+        "time": "23:20",
         "destination": "Joinville-le-Pont RER"
       },
       {
@@ -872,450 +872,6 @@
   },
   "bus201": {
     "horaires": [
-      {
-        "time": "22:19",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "21:59",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "21:29",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "21:12",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "20:57",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "20:42",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "20:27",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "20:12",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "19:59",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "19:45",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "19:03",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:49",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:35",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:07",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "17:39",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "17:24",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "17:12",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "16:58",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "16:42",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "16:22",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "16:03",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "15:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "15:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "15:01",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "14:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "14:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "14:01",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "13:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "13:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "13:01",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "12:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "12:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "12:01",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "11:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "11:21",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "10:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "10:26",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "10:11",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "09:56",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "09:41",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "09:26",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "09:13",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "09:00",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "08:48",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "08:35",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "08:22",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "08:09",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "07:56",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "07:29",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "07:16",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "07:03",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "06:38",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "06:25",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "06:11",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "05:51",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "22:42",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "22:22",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "22:02",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "21:42",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "21:22",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "21:05",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "20:48",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "20:31",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "20:15",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:59",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:29",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:14",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:00",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "18:31",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "18:13",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "17:59",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "17:43",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "17:27",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "17:06",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "16:45",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "16:22",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "16:01",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "15:20",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "14:59",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "14:38",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "14:18",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "13:58",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "13:38",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "13:18",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "12:58",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "12:38",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "12:18",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "11:58",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "11:38",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "11:18",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "11:00",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "10:45",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "10:30",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "10:16",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "09:48",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "09:34",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "09:21",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "09:08",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "08:55",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "08:41",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "08:27",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "08:13",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "08:01",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "07:48",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "07:36",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "07:14",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "06:59",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "06:47",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "06:35",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "06:24",
-        "destination": "Champigny - Diderot - La Plage"
-      },
       {
         "time": "22:44",
         "destination": "Porte Dorée"
@@ -1361,11 +917,7 @@
         "destination": "Champigny - Diderot - La Plage"
       },
       {
-        "time": "19:44",
-        "destination": "Champigny - Diderot - La Plage"
-      },
-      {
-        "time": "19:16",
+        "time": "17:53",
         "destination": "Porte Dorée"
       },
       {
@@ -1373,15 +925,11 @@
         "destination": "Porte Dorée"
       },
       {
-        "time": "17:53",
+        "time": "19:16",
         "destination": "Porte Dorée"
       },
       {
-        "time": "19:31",
-        "destination": "Porte Dorée"
-      },
-      {
-        "time": "18:45",
+        "time": "19:44",
         "destination": "Champigny - Diderot - La Plage"
       }
     ],
@@ -1412,5 +960,5 @@
       ]
     }
   },
-  "lastFetch": 1754973099
+  "lastFetch": 1755059480
 }

@@ -9,7 +9,7 @@
   "bus201": {
     "horaires": [
       {
-        "time": "19:16",
+        "time": "17:53",
         "destination": "Porte Dorée"
       },
       {
@@ -17,7 +17,7 @@
         "destination": "Porte Dorée"
       },
       {
-        "time": "17:53",
+        "time": "19:16",
         "destination": "Porte Dorée"
       },
       {
@@ -45,12 +45,12 @@
         "Bel Air",
         "Champigny - Diderot - La Plage",
         "Dagoty",
-        "Joinville-le-Pont RER",
         "Verdun",
+        "Joinville-le-Pont RER",
         "Carrefour de la Résistance",
         "Charles Floquet - Diderot"
       ]
     }
   },
-  "lastFetch": 1755749837
+  "lastFetch": 1755836177
 }

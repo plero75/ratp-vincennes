@@ -437,18 +437,6 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "11:14",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "11:32",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "10:56",
-        "destination": "Gare de Lyon"
-      },
-      {
         "time": "10:03",
         "destination": "Gare de Lyon"
       },
@@ -457,11 +445,35 @@
         "destination": "Gare de Lyon"
       },
       {
+        "time": "10:56",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "11:32",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "11:14",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:08",
+        "destination": "Gare de Lyon"
+      },
+      {
         "time": "13:02",
         "destination": "Gare de Lyon"
       },
       {
         "time": "10:20",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:56",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:26",
         "destination": "Gare de Lyon"
       },
       {
@@ -481,19 +493,7 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "12:08",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:56",
-        "destination": "Gare de Lyon"
-      },
-      {
         "time": "12:44",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:26",
         "destination": "Gare de Lyon"
       },
       {
@@ -501,11 +501,11 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "18:17",
+        "time": "10:38",
         "destination": "Gare de Lyon"
       },
       {
-        "time": "10:38",
+        "time": "18:17",
         "destination": "Gare de Lyon"
       },
       {
@@ -941,18 +941,6 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "11:12",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "11:30",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "10:54",
-        "destination": "Gare de Lyon"
-      },
-      {
         "time": "10:01",
         "destination": "Gare de Lyon"
       },
@@ -961,11 +949,35 @@
         "destination": "Gare de Lyon"
       },
       {
+        "time": "10:54",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "11:30",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "11:12",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:06",
+        "destination": "Gare de Lyon"
+      },
+      {
         "time": "13:00",
         "destination": "Gare de Lyon"
       },
       {
         "time": "10:18",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:54",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:24",
         "destination": "Gare de Lyon"
       },
       {
@@ -985,19 +997,7 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "12:06",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:54",
-        "destination": "Gare de Lyon"
-      },
-      {
         "time": "12:42",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:24",
         "destination": "Gare de Lyon"
       },
       {
@@ -1005,11 +1005,11 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "18:15",
+        "time": "10:36",
         "destination": "Gare de Lyon"
       },
       {
-        "time": "10:36",
+        "time": "18:15",
         "destination": "Gare de Lyon"
       }
     ],
@@ -1019,11 +1019,11 @@
         "Joinville-le-Pont RER"
       ],
       "Gare de Lyon": [
-        "Charenton- Wattignies",
         "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
+        "Charenton- Wattignies",
         "Nicolaï",
         "Vacassy - Santé publique",
         "Plateau de Gravelle",
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1758169359
+  "lastFetch": 1758255749
 }

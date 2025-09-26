@@ -437,47 +437,7 @@
         "destination": "Joinville-le-Pont RER"
       },
       {
-        "time": "12:26",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:36",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:17",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "10:38",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:44",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:56",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:08",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:46",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "19:15",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:29",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:12",
+        "time": "13:02",
         "destination": "Gare de Lyon"
       },
       {
@@ -485,11 +445,43 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "13:02",
+        "time": "09:12",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "09:29",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "19:15",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "09:46",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:08",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:56",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:44",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "10:38",
         "destination": "Gare de Lyon"
       },
       {
         "time": "11:50",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:17",
         "destination": "Gare de Lyon"
       },
       {
@@ -506,6 +498,14 @@
       },
       {
         "time": "11:14",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:36",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:26",
         "destination": "Gare de Lyon"
       },
       {
@@ -941,47 +941,7 @@
         "destination": "Joinville-le-Pont RER"
       },
       {
-        "time": "12:24",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:34",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:15",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "10:36",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:42",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "18:54",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "12:06",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:44",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "19:13",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:27",
-        "destination": "Gare de Lyon"
-      },
-      {
-        "time": "09:10",
+        "time": "13:00",
         "destination": "Gare de Lyon"
       },
       {
@@ -989,11 +949,43 @@
         "destination": "Gare de Lyon"
       },
       {
-        "time": "13:00",
+        "time": "09:10",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "09:27",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "19:13",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "09:44",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:06",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:54",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:42",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "10:36",
         "destination": "Gare de Lyon"
       },
       {
         "time": "11:48",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:15",
         "destination": "Gare de Lyon"
       },
       {
@@ -1011,15 +1003,23 @@
       {
         "time": "11:12",
         "destination": "Gare de Lyon"
+      },
+      {
+        "time": "18:34",
+        "destination": "Gare de Lyon"
+      },
+      {
+        "time": "12:24",
+        "destination": "Gare de Lyon"
       }
     ],
     "gares_par_destination": {
       "Gare de Lyon": [
         "Porte de Reuilly",
+        "Charenton- Wattignies",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
-        "Charenton- Wattignies",
         "Nicolaï",
         "Vacassy - Santé publique",
         "Plateau de Gravelle",
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1758774210
+  "lastFetch": 1758860623
 }

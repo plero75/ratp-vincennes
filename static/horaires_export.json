@@ -1015,6 +1015,8 @@
     ],
     "gares_par_destination": {
       "Gare de Lyon": [
+        "Charenton- Wattignies",
+        "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
@@ -1025,9 +1027,7 @@
         "Hôpitaux de Saint-Maurice",
         "Porte de Charenton",
         "Wattignies - Gravelle",
-        "Porte de Reuilly",
         "Gare de Bercy",
-        "Charenton- Wattignies",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Dugommier",
         "Gare de Lyon"
@@ -1042,5 +1042,5 @@
     "horaires": [],
     "gares_par_destination": {}
   },
-  "lastFetch": 1760588458
+  "lastFetch": 1760674913
 }

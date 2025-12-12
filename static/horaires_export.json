@@ -1015,7 +1015,6 @@
     ],
     "gares_par_destination": {
       "Gare de Lyon": [
-        "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
@@ -1029,6 +1028,7 @@
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Dugommier",
+        "Porte de Reuilly",
         "Charenton- Wattignies",
         "Gare de Lyon"
       ],
@@ -1042,5 +1042,5 @@
     "horaires": [],
     "gares_par_destination": {}
   },
-  "lastFetch": 1765427756
+  "lastFetch": 1765514055
 }

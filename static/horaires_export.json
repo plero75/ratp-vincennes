@@ -1019,7 +1019,7 @@
         "Joinville-le-Pont RER"
       ],
       "Gare de Lyon": [
-        "Charenton - Wattignies",
+        "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
@@ -1033,7 +1033,7 @@
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Dugommier",
-        "Porte de Reuilly",
+        "Charenton - Wattignies",
         "Gare de Lyon"
       ]
     }
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1773725149
+  "lastFetch": 1773811764
 }

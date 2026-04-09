@@ -1027,9 +1027,9 @@
         "Wattignies - Gravelle",
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
-        "Charenton - Wattignies",
         "Dugommier",
         "Porte de Reuilly",
+        "Charenton - Wattignies",
         "Gare de Lyon"
       ],
       "Joinville-le-Pont RER": [
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1775627570
+  "lastFetch": 1775714099
 }

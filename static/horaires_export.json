@@ -1019,6 +1019,8 @@
         "Joinville-le-Pont RER"
       ],
       "Gare de Lyon": [
+        "Charenton - Wattignies",
+        "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
@@ -1031,8 +1033,6 @@
         "Wattignies - Gravelle",
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
-        "Porte de Reuilly",
-        "Charenton - Wattignies",
         "Dugommier",
         "Gare de Lyon"
       ]
@@ -1042,5 +1042,5 @@
     "horaires": [],
     "gares_par_destination": {}
   },
-  "lastFetch": 1776837701
+  "lastFetch": 1776924401
 }

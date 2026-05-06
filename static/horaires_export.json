@@ -1024,12 +1024,12 @@
         "Route de la Terrasse",
         "Hôpitaux de Saint-Maurice",
         "Porte de Charenton",
-        "Porte de Reuilly",
         "Wattignies - Gravelle",
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances / Gare de Lyon",
         "Dugommier",
         "Charenton - Wattignies",
+        "Porte de Reuilly",
         "Gare de Lyon"
       ],
       "Joinville-le-Pont RER": [
@@ -1754,8 +1754,8 @@
         "Bel Air",
         "Champigny - Diderot - La Plage",
         "Dagoty",
-        "Joinville-le-Pont RER",
         "Verdun",
+        "Joinville-le-Pont RER",
         "Carrefour de la Résistance",
         "Charles Floquet - Diderot"
       ],
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1777961932
+  "lastFetch": 1778049201
 }

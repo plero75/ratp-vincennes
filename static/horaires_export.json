@@ -1022,6 +1022,7 @@
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
+        "Charenton - Wattignies",
         "Nicolaï",
         "Vacassy - Santé publique",
         "Plateau de Gravelle",
@@ -1033,7 +1034,6 @@
         "Ministère de l'Economie et des Finances",
         "Dugommier",
         "Porte de Reuilly",
-        "Charenton - Wattignies",
         "Gare de Lyon"
       ]
     }
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1779869727
+  "lastFetch": 1779955037
 }

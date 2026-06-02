@@ -1019,10 +1019,10 @@
         "Joinville-le-Pont RER"
       ],
       "Gare de Lyon": [
-        "Porte de Reuilly",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès",
+        "Porte de Reuilly",
         "Nicolaï",
         "Vacassy - Santé publique",
         "Plateau de Gravelle",
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1780305697
+  "lastFetch": 1780388894
 }

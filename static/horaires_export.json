@@ -1029,11 +1029,11 @@
         "Hôpitaux de Saint-Maurice",
         "Porte de Charenton",
         "Wattignies - Gravelle",
-        "Charenton - Wattignies",
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances",
         "Dugommier",
         "Porte de Reuilly",
+        "Charenton - Wattignies",
         "Gare de Lyon"
       ]
     }
@@ -1042,5 +1042,5 @@
     "horaires": [],
     "gares_par_destination": {}
   },
-  "lastFetch": 1782373353
+  "lastFetch": 1782460235
 }

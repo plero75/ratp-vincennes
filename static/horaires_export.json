@@ -1025,9 +1025,9 @@
         "Gare de Bercy",
         "Ministère de l'Economie et des Finances",
         "Dugommier",
+        "Gare de Lyon",
         "Porte de Reuilly",
         "Charenton - Wattignies",
-        "Gare de Lyon",
         "Gravelle - Reuilly",
         "Gravelle - Liberté",
         "Gravelle - Jaurès"
@@ -1772,5 +1772,5 @@
       ]
     }
   },
-  "lastFetch": 1789549484
+  "lastFetch": 1789636104
 }
